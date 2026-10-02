@@ -1,0 +1,28 @@
+modLoader="javafml"
+loaderVersion="[47,)"
+license="MIT"
+
+[[mods]]
+modId="terraingraph"
+version="${version}"
+displayName="TerrainGraph"
+displayTest="IGNORE_ALL_VERSION"
+description='''
+Reduces repeated density graph conversion during noise chunk initialization.
+Each conversion cache belongs to one initialization and preserves the original
+wrapping visitor. No client installation is required on a dedicated server.
+'''
+
+[[dependencies.terraingraph]]
+modId="forge"
+mandatory=true
+versionRange="[47,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.terraingraph]]
+modId="minecraft"
+mandatory=true
+versionRange="[1.20.1]"
+ordering="NONE"
+side="BOTH"
