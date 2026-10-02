@@ -1,0 +1,33 @@
+modLoader="javafml"
+loaderVersion="[4,)"
+license="MIT"
+
+[[mods]]
+modId="terraingraph"
+version="${version}"
+displayName="TerrainGraph"
+description='''
+Reduces repeated density graph conversions during noise chunk initialization.
+Caches are bounded and local to each traversal. Dedicated servers do not
+require clients to install this mod; install on the client for single-player.
+'''
+
+[[mixins]]
+config="terraingraph.mixins.json"
+
+[features.terraingraph]
+javaVersion="[21,)"
+
+[[dependencies.terraingraph]]
+modId="neoforge"
+type="required"
+versionRange="[21.1.232,)"
+ordering="NONE"
+side="BOTH"
+
+[[dependencies.terraingraph]]
+modId="minecraft"
+type="required"
+versionRange="[1.21.1]"
+ordering="NONE"
+side="BOTH"

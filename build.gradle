@@ -1,0 +1,48 @@
+plugins {
+    id 'java'
+    id 'net.neoforged.moddev' version '2.0.141'
+}
+
+version = mod_version
+group = 'cn.tohsaka.factory'
+base { archivesName = "terraingraph-${minecraft_version}-neoforge" }
+java.toolchain.languageVersion = JavaLanguageVersion.of(21)
+
+sourceSets.test.compileClasspath += sourceSets.main.compileClasspath
+
+neoForge {
+    version = neo_version
+    runs {
+        server {
+            server()
+            gameDirectory = file('run')
+            programArgument '--nogui'
+        }
+    }
+    mods {
+        terraingraph { sourceSet sourceSets.main }
+    }
+}
+
+repositories { mavenCentral() }
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.10.2')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+    testImplementation 'org.ow2.asm:asm-analysis:9.8'
+}
+
+tasks.withType(JavaCompile).configureEach { options.encoding = 'UTF-8' }
+tasks.named('test', Test) {
+    useJUnitPlatform()
+    classpath += sourceSets.main.compileClasspath
+}
+tasks.named('processResources') {
+    inputs.property 'version', project.version
+    filesMatching('META-INF/neoforge.mods.toml') { expand version: project.version }
+}
+tasks.named('jar', Jar) {
+    from('LICENSE')
+    manifest.attributes 'Implementation-Version': project.version,
+            'Automatic-Module-Name': 'cn.tohsaka.factory.terraingraph'
+}

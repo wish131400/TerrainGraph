@@ -1,0 +1,14 @@
+{
+  "required": true,
+  "minVersion": "0.8.5",
+  "package": "cn.tohsaka.factory.terraingraph.mixin",
+  "plugin": "cn.tohsaka.factory.terraingraph.TerrainGraphMixinPlugin",
+  "compatibilityLevel": "JAVA_21",
+  "mixins": [
+    "NoiseChunkMixin",
+    "DensityMapMixin",
+    "MappedMapMixin",
+    "NoiseGeneratorAccess"
+  ],
+  "injectors": { "defaultRequire": 1 }
+}

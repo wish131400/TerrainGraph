@@ -1,0 +1,14 @@
+# Gradle and generated build output
+.gradle/
+build/
+out/
+
+# Runtime files
+run/
+logs/
+*.log
+*.jfr
+
+# Java output
+*.class
+bin/
